@@ -1,4 +1,4 @@
-package demo.HumanTargets.Model;
+package demo.HumanTargets.Security;
 
 import org.springframework.stereotype.Component;
 
@@ -11,19 +11,15 @@ import lombok.Data;
 
 @Component
 @Entity
-@Table(name = "Donee_request")
+@Table(name = "HT_Users")
 @Data
-public class RequestDonee {
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    private long id;
-
-
-    private String password;
-    private String fullname;
-    private int phoneNumber;
-    private String email;
-    private String rationcardno;
+public class Users {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String username;
+    private String password;
+    private String role;
 }
