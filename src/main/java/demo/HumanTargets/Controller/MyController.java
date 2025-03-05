@@ -36,7 +36,6 @@ public class MyController {
     public String home() {
         return "/html/index.html";
     }
-    
-    
+       
     
 }
