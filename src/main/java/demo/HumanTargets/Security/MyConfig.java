@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,7 +22,7 @@ public class MyConfig {
         return security
                 .csrf(customizer -> customizer.disable())
                 .authorizeHttpRequests(request -> request
-                                                       .requestMatchers("/","/html/index.html","/css/**","/img/**","/js/**","/lib/**","/scss/**").permitAll()
+                                                       .requestMatchers("/","/html/index.html","/css/**","/img/**","/js/**","/lib/**","/scss/**","/html/login.html","/html/register.html","/register_process").permitAll()
                                                        .requestMatchers("/admin/**").hasRole("Admin")
                                                         .anyRequest().authenticated())
                                                       
@@ -32,7 +31,7 @@ public class MyConfig {
                     .loginProcessingUrl("/perform_login")
                     .defaultSuccessUrl("/",true)
                     .failureUrl("/html/404.html"))
-                .httpBasic(Customizer.withDefaults())
+                //.httpBasic(Customizer.withDefaults())
                 .build();
     }
 

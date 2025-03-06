@@ -1,4 +1,4 @@
-package demo.HumanTargets.Security;
+package demo.HumanTargets.Model;
 
 import org.springframework.stereotype.Component;
 
@@ -10,18 +10,17 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Component
-@Entity
-@Table(name = "HT_Users")
 @Data
-public class Users {
-    
+@Entity
+@Table(name = "Donation_items")
+public class Donations {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String phonenumber;
-    private String fullname;
-    private String username;
-    private String password;
-    private String role;
+    private String category;    // Shoes, Stationery , Bags, clothes, furniture
+    private String item_name;
+    private String yearold;
+
 }

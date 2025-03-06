@@ -11,19 +11,22 @@ import lombok.Data;
 
 @Component
 @Entity
-@Table(name = "Donee_request")
 @Data
-public class RequestDonee {
+@Table(name = "Donor_donation_form")
+public class DonorForm {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-
-    private String password;
-    private String fullname;
-    private int phoneNumber;
+    private String name;
+    private String item_name;
     private String email;
-    private String rationcardno;
-    
+    private String mobile;
+    private String panCard;
+    private int yearold;
+    private String category;
+
+
+
 }
