@@ -19,10 +19,10 @@ public class RequestGetter {
     @Id
     private long id;
 
-
+    private String username;
     private String password;
     private String fullname;
-    private int phoneNumber;
+    private String phoneNumber;
     private String email;
     private String rationcardno;
     
