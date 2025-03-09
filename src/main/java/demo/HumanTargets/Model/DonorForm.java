@@ -21,11 +21,12 @@ public class DonorForm {
 
     private String name;
     private String item_name;
-    private String email;
+    private String username;
     private String mobile;
     private String panCard;
     private int yearold;
     private String category;
+    private String city;
 
 
 

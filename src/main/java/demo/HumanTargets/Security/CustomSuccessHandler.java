@@ -19,6 +19,9 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
                 if(authentication.getAuthorities().toString().contains("ROLE_Admin")){
                     response.sendRedirect("/Admin/");
                 }
+                else if(authentication.getAuthorities().toString().contains("Donor")){
+                    response.sendRedirect("/mydonation");
+                }
                 else{
                     response.sendRedirect("/");
                 }

@@ -3,6 +3,7 @@ package demo.HumanTargets.Serive;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import demo.HumanTargets.Model.RequestGetter;
@@ -12,6 +13,7 @@ import demo.HumanTargets.Security.Users;
 
 @Service
 public class GetterRequest {
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10);
     
     @Autowired
     GetterRequest_repo getterRequest_repo;
@@ -39,7 +41,7 @@ public class GetterRequest {
         RequestGetter getter = getterRequest_repo.findById(id).get();
        users.setFullname(getter.getFullname());
        users.setUsername(getter.getUsername());
-       users.setPassword(getter.getPassword());
+       users.setPassword(encoder.encode(getter.getPassword()));
        users.setPhonenumber(getter.getPhoneNumber());
        users.setRole("Getter");
        userRepo.save(users);
