@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import demo.HumanTargets.Model.Donations;
@@ -39,6 +38,7 @@ public class MyController {
     
     @PostMapping("/NewdoneeRequest")
     public String NewdoneeRequest(@ModelAttribute RequestGetter requestDonee ) {
+        System.out.println("reached here");
         getterRequest.newGetterRequest(requestDonee);
         return "";
     }
@@ -70,6 +70,7 @@ public class MyController {
         donorForm_service.save(donorForm);
         donations.setItem_name(donorForm.getItem_name());
         donations.setCategory(donorForm.getCategory());
+        donations.setDistrict(donorForm.getDistrict());
         donations.setCity(donorForm.getCity());
         if(donorForm.getYearold()==0){
             donations.setYearold("New");
@@ -81,6 +82,19 @@ public class MyController {
         donationService.newDonation(donations);
         return "";
     }
+
+    @GetMapping("/alldonations")
+    @ResponseBody
+    public List<Donations> getAlldonations(@RequestParam String distrcit) {
+        return donationService.allitemsInCity(distrcit);
+    }
+
+    @GetMapping("/donationitems")
+    public String donationitems() {
+        return "/html/donatedItem.html";
+    }
+    
+    
 
     @GetMapping("/mydonation")
     public String mydonations() {

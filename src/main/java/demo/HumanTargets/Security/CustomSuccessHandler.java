@@ -23,7 +23,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
                     response.sendRedirect("/mydonation");
                 }
                 else{
-                    response.sendRedirect("/");
+                    response.sendRedirect("/donationitems");
                 }
     }
     

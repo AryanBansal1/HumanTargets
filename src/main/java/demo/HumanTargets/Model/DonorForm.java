@@ -26,6 +26,7 @@ public class DonorForm {
     private String panCard;
     private int yearold;
     private String category;
+    private String district;
     private String city;
 
 
