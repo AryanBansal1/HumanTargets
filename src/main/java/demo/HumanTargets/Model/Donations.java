@@ -22,6 +22,7 @@ public class Donations {
     private String category;    // Shoes, Stationery , Bags, clothes, furniture
     private String item_name;
     private String yearold;
+    private String district;
     private String city;
 
 }

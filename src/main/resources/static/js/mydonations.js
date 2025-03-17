@@ -30,7 +30,7 @@ function fetchDonations(username) {
                     <td>${donation.id}</td>
                     <td>${donation.item_name}</td>
                     <td>${donation.category}</td>
-                    <td>${donation.city}</td>
+                    <td>${donation.district}</td>
                     <td>${donation.yearold}</td>
                 `;
                 tableBody.appendChild(row);
