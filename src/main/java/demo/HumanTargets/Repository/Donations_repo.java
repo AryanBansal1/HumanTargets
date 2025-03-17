@@ -4,7 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import demo.HumanTargets.Model.Donations;
+import java.util.List;
+
 @Repository
 public interface Donations_repo extends JpaRepository<Donations,Long> {
-    
+    public List<Donations> findByDistrict(String district);
 }

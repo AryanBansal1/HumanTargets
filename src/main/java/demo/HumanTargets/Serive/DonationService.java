@@ -1,5 +1,7 @@
 package demo.HumanTargets.Serive;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,5 +14,13 @@ public class DonationService {
 
     public void newDonation(Donations donations){
         donations_repo.save(donations);
+    }
+
+    public List<Donations> allitems(){
+        return donations_repo.findAll();
+    }
+
+    public List<Donations> allitemsInCity(String city){
+        return donations_repo.findByDistrict(city);
     }
 }
