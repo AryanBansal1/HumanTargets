@@ -21,7 +21,7 @@ public class DonationService {
     }
 
     public List<Donations> allitemsInCity(String city){
-        return donations_repo.findByDistrict(city);
+        return donations_repo.findByDistrictAndStatus(city, "Available");
     }
 
     public void updatestatus(Long id,String gettername){
