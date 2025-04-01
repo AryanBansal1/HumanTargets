@@ -23,4 +23,11 @@ public class DonationService {
     public List<Donations> allitemsInCity(String city){
         return donations_repo.findByDistrict(city);
     }
+
+    public void updatestatus(Long id,String gettername){
+        Donations don = donations_repo.findById(id).get();
+        don.setStatus("Booked");
+        don.setBookedby(gettername);
+        donations_repo.save(don);
+    }
 }

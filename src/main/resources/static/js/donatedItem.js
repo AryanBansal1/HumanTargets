@@ -36,15 +36,50 @@ function sendCitytobackend(district){
            data.forEach(donation =>{
                 const row = document.createElement("tr")
                 row.innerHTML=`
+                <td>${donation.id}</td>
                 <td>${donation.item_name}</td>
                 <td>${donation.category}</td>
                 <td>${donation.city}</td>
                 <td>${donation.yearold}</td>
+                <td>${donation.status}</td>
+                <td>
+                    <button onclick="bookingitem(${donation.id})">BookNow</button>
+                </td>
                 `
                 tablebody.appendChild(row)
            })
         })
         .catch(error => console.error("error fetching donations ",error))
+}
+function bookingitem(id){
+    fetch("/api/current-user")
+        .then(response => response.text())
+        .then(username => {
+            if(username){
+                sessionStorage.setItem("username",username);
+                console.log("username stored:",username)
+
+                fetch(`http://localhost:9898/book_donation_item?id=${id}&gettername=${encodeURIComponent(username)}`,{
+                    method: "PUT",
+                    headers:{
+                        "Content-Type":"application/x-www-form-urlencoded",
+                    },
+                })
+                .then(response => {
+                    if(response.ok){
+                        console.log(`Donation item ${id} booked by ${username}`);
+                    }
+                    else{
+                        console.error("Failed to book donation item.");
+                    }
+                })
+                .catch(error => console.error("Error booking donation:", error));
+            }
+            else{
+                console.error("user is not logged in");
+            }
+        })
+        .catch(error => console.error("Error fetching user:", error));
 }
 
 

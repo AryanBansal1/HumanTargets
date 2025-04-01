@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface Donations_repo extends JpaRepository<Donations,Long> {
     public List<Donations> findByDistrict(String district);
+    
 }
