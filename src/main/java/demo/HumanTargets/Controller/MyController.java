@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import demo.HumanTargets.Model.Donations;
 import demo.HumanTargets.Model.DonorForm;
@@ -20,6 +21,8 @@ import demo.HumanTargets.Serive.GetterRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+
 
 
 
@@ -106,6 +109,15 @@ public class MyController {
     public List<DonorForm> myallDonations(@RequestParam String username) {
         return donorForm_service.mydonation(username);
     }
+
+
+    @PutMapping("/book_donation_item")
+    @ResponseBody
+    public String book(@RequestParam Long id,@RequestParam String gettername) {
+         donationService.updatestatus(id, gettername);
+         return "Donation item booked successfully";
+    }
+    
     
     
     
