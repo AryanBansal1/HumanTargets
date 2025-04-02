@@ -23,6 +23,10 @@ public class DonationService {
         return donations_repo.findAll();
     }
 
+    public List<Donations> allbookeditems(){
+        return donations_repo.findByStatus("Booked");
+    }
+
     public List<Donations> allitemsInCity(String city){
         return donations_repo.findByDistrictAndStatus(city, "Available");
     }
