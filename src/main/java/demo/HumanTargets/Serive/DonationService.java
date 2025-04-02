@@ -12,6 +12,9 @@ public class DonationService {
     @Autowired
     Donations_repo donations_repo;
 
+    @Autowired
+    SimpleEmailService simpleEmailService;
+
     public void newDonation(Donations donations){
         donations_repo.save(donations);
     }
@@ -28,6 +31,9 @@ public class DonationService {
         Donations don = donations_repo.findById(id).get();
         don.setStatus("Booked");
         don.setBookedby(gettername);
+        String donatedbyname = don.getDonatedby();
+        String itemName = don.getItem_name();
         donations_repo.save(don);
+        simpleEmailService.sendmail(gettername, donatedbyname,itemName);
     }
 }

@@ -27,6 +27,7 @@ public class Donations {
     private String city;
     private String status;
     private String bookedby;
+    private String donatedby;
 
     @PrePersist
     public void setDefault(){
