@@ -75,6 +75,7 @@ public class MyController {
         donations.setCategory(donorForm.getCategory());
         donations.setDistrict(donorForm.getDistrict());
         donations.setCity(donorForm.getCity());
+        donations.setDonatedby(donorForm.getUsername());
         if(donorForm.getYearold()==0){
             donations.setYearold("New");
         }
