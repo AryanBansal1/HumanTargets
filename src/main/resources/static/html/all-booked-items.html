@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Getter Requests</title>
+    <title>All booked items</title>
     <style>
         table {
             width: 100%;
@@ -27,30 +27,26 @@
         </style>
 </head>
 <body>
-    <h1>All Getter Requests</h1>
+    <h1>here you will see all the items booked so far</h1>
     <table border="1">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Full Name</th>
-                <th>Phone Number</th>
-                <th>Email</th>
-                <th>Ration Card No.</th>
+                <th>Item Id</th>
+                <th>Item Name</th>
+                <th>Cateogry</th>
+                <th>Old</th>
+                <th>District</th>
+                <th>Status</th>
+                <th>Donated BY</th>
+                <th>Booked By</th>
             </tr>
         </thead>
-        <tbody id="data-table">
-            <!-- Data will be inserted here dynamically -->
+        <tbody id = "item-table">
+            <!--Data will be inserted here dynamically-->
         </tbody>
     </table>
 
-    <button onclick="redirectToBookedItems()">View Booked Items</button>
-    <script>
-        function redirectToBookedItems(){
-            window.location.href = "/Admin/booked-items";
-        }
-    </script>
-    <script src="../js/allGetter.js"></script>
-    
+        
 </body>
+<script src="../js/allbookeditems.js"></script>
 </html>

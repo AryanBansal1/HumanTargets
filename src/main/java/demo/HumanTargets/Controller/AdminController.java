@@ -7,13 +7,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import demo.HumanTargets.Model.Donations;
 import demo.HumanTargets.Model.RequestGetter;
+import demo.HumanTargets.Serive.DonationService;
 import demo.HumanTargets.Serive.GetterRequest;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -24,6 +28,9 @@ public class AdminController {
     
     @Autowired
     GetterRequest getterRequest;
+
+    @Autowired
+    DonationService donationService;
 
     @GetMapping("/")
     public String adminHome() {
@@ -49,6 +56,19 @@ public class AdminController {
     public void approveGetter(@PathVariable Long id) {
         getterRequest.approveGetter(id);
     }
+
+    @GetMapping("/booked-items")
+    public String bookeditems(){
+        System.out.println("Reached here");
+        return "/html/all-booked-items.html";
+    }
+
+    @GetMapping("/all-booked-items")
+    @ResponseBody
+    public List<Donations> allitemsbooked() {
+        return donationService.allbookeditems();
+    }
+    
     
 
     
