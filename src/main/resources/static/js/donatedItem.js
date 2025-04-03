@@ -31,23 +31,22 @@ function sendCitytobackend(district){
     fetch(`http://localhost:9898/alldonations?distrcit=${district}`)
         .then(response => response.json())
         .then(data => {
-           const tablebody = document.getElementById("donation-table")
-           tablebody.innerHTML="";
-           data.forEach(donation =>{
-                const row = document.createElement("tr")
-                row.innerHTML=`
-                <td>${donation.id}</td>
-                <td>${donation.item_name}</td>
-                <td>${donation.category}</td>
-                <td>${donation.city}</td>
-                <td>${donation.yearold}</td>
-                <td>${donation.status}</td>
-                <td>
-                    <button onclick="bookingitem(${donation.id})">BookNow</button>
-                </td>
-                `
-                tablebody.appendChild(row)
-           })
+        const container = document.getElementById("donation-container");
+        container.innerHTML = "";
+        data.forEach(donation => {
+            const card = document.createElement("div");
+            card.classList.add("card");
+            card.innerHTML = `
+                <h3>${donation.item_name}</h3>
+                <p><strong>Category:</strong> ${donation.category}</p>
+                <p><strong>City:</strong> ${donation.city}</p>
+                <p><strong>Year Old:</strong> ${donation.yearold}</p>
+                <p><strong>Status:</strong> ${donation.status}</p>
+                <button onclick="bookingitem(${donation.id})">Book Now</button>
+            `;
+            container.appendChild(card);
+
+           });
         })
         .catch(error => console.error("error fetching donations ",error))
 }
