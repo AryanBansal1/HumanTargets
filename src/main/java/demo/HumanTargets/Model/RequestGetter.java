@@ -23,7 +23,6 @@ public class RequestGetter {
     private String password;
     private String fullname;
     private String phoneNumber;
-    private String email;
     private String rationcardno;
     
 }
