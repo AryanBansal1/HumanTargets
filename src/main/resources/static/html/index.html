@@ -87,7 +87,7 @@
 
 
   <!-- Carousel Start -->
-  <div class="container-fluid p-0 mb-5">
+  <div class="container-fluid p-0">
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -142,6 +142,210 @@
     </div>
 </div>
 <!-- Carousel End -->
+
+<!--Popup forms Start-->
+
+<div class="tagline">
+    <h1>A Hand to Give, A Hand to Hold.</h1>
+</div>
+
+<div class="container1">
+    <div class="card-container">
+        <!-- Donor Card -->
+        <div class="card">
+            <h2>Be a Donor</h2>
+            <br>
+            <p>Take a part in making a difference. Your contribution can change lives.</p>
+            <br>
+            <button class="btn-primary" onclick="openForm('donor')">Donate Now</button>
+        </div>
+        
+        <!-- Recipient Card -->
+        <div class="card">
+            <h2>Be a Seeker</h2>
+            <br>
+            <p>Need support? Register with us to receive help and resources.</p>
+            <br>
+            <button class="btn btn-outline-primary" onclick="openForm('recipient')">Register</button>
+        </div>
+    </div>
+</div>
+
+<!-- Donor Popup Form -->
+<div id="popup-form-donor" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closeForm('donor')">&times;</span>
+        <h2>Donate</h2>
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Mobile Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="pan">Pan Card:</label>
+                <input type="text" id="pan" name="pan" required>
+            </div>
+            <div class="form-group">
+                <label for="item">Item Name:</label>
+                <input type="text" id="item" name="item" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <input type="text" id="category" name="category" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Year Old:</label>
+                <input type="text" id="year" name="year" required>
+            </div>
+            <div class="form-group">
+                <label for="district">District:</label>
+                <input type="text" id="district" name="district" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <button type="submit">Donate Now</button>
+        </form>
+    </div>
+</div>
+
+<!-- Recipient Popup Form -->
+<div id="popup-form-recipient" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closeForm('recipient')">&times;</span>
+        <h2>Seeker Registration</h2>
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="rname">Full Name:</label>
+                <input type="text" id="rname" name="rname" required>
+            </div>
+            <div class="form-group">
+                <label for="remail">Email:</label>
+                <input type="email" id="remail" name="remail" required>
+            </div>
+            <div class="form-group">
+                <label for="rphone">Mobile Number:</label>
+                <input type="tel" id="rphone" name="rphone" required>
+            </div>
+            <div class="form-group">
+                <label for="ration">Ration Card Number:</label>
+                <input type="text" id="ration" name="ration" required>
+            </div>
+            <div class="form-group">
+                <label for="rpassword">Password:</label>
+                <input type="password" id="ration" name="ration" required>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    body.modal-open {
+        overflow: hidden;
+    }
+    .container1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+        background-color: #f4f4f4;
+    }
+    .tagline {
+        text-align: center;
+        font-size: 20px;
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+    }
+    .card-container {
+        display: flex;
+        gap: 100px;
+    }
+    .card {
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 400px;
+    }
+    
+    .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    .popup-content {
+        background: white;
+        padding-left: 60px;
+        padding-right: 60px;
+        padding-bottom: 60px;
+        margin-top: 60px;
+        border-radius: 10px;
+        width: 600px;
+        text-align: left;
+    }
+    .close {
+        float: right;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .form-group {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+       
+    }
+    .form-group label {
+        flex: 1;
+        margin-right: 10px;
+    }
+    .form-group input {
+        flex: 1;
+        padding: 2px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button[type="submit"] {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+</style>
+
+<script>
+    function openForm(type) {
+        document.body.classList.add("modal-open");
+        document.getElementById(`popup-form-${type}`).style.display = "flex";
+    }
+    function closeForm(type) {
+        document.body.classList.remove("modal-open");
+        document.getElementById(`popup-form-${type}`).style.display = "none";
+    }
+</script>
+<!--Popup form end-->
 
 <!-- About Start -->
 <div class="container-xxl py-5">
