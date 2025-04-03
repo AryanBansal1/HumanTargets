@@ -34,7 +34,7 @@ public class AdminController {
 
     @GetMapping("/")
     public String adminHome() {
-        return "/html/allGetter.html";
+        return "/html/admin.html";
     }
     
 
