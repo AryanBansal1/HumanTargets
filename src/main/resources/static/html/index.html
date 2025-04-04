@@ -177,26 +177,26 @@
     <div class="popup-content">
         <span class="close" onclick="closeForm('donor')">&times;</span>
         <h2>Donate</h2>
-        <form action="" method="post">
+        <form action="/donor_form" method="post">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="username" required>
             </div>
             <div class="form-group">
                 <label for="phone">Mobile Number:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <input type="tel" id="phone" name="mobile" required>
             </div>
             <div class="form-group">
                 <label for="pan">Pan Card:</label>
-                <input type="text" id="pan" name="pan" required>
+                <input type="text" id="pan" name="panCard" required>
             </div>
             <div class="form-group">
                 <label for="item">Item Name:</label>
-                <input type="text" id="item" name="item" required>
+                <input type="text" id="item" name="item_name" required>
             </div>
             <div class="form-group">
                 <label for="category">Category:</label>
@@ -204,7 +204,7 @@
             </div>
             <div class="form-group">
                 <label for="year">Year Old:</label>
-                <input type="text" id="year" name="year" required>
+                <input type="text" id="year" name="yearold" required>
             </div>
             <div class="form-group">
                 <label for="district">District:</label>
@@ -224,26 +224,26 @@
     <div class="popup-content">
         <span class="close" onclick="closeForm('recipient')">&times;</span>
         <h2>Seeker Registration</h2>
-        <form action="" method="post">
+        <form action="/NewdoneeRequest" method="post">
             <div class="form-group">
                 <label for="rname">Full Name:</label>
-                <input type="text" id="rname" name="rname" required>
+                <input type="text" id="rname" name="fullname" required>
             </div>
             <div class="form-group">
                 <label for="remail">Email:</label>
-                <input type="email" id="remail" name="remail" required>
+                <input type="email" id="remail" name="username" required>
             </div>
             <div class="form-group">
                 <label for="rphone">Mobile Number:</label>
-                <input type="tel" id="rphone" name="rphone" required>
+                <input type="tel" id="rphone" name="phoneNumber" required>
             </div>
             <div class="form-group">
                 <label for="ration">Ration Card Number:</label>
-                <input type="text" id="ration" name="ration" required>
+                <input type="text" id="ration" name="rationcardno" required>
             </div>
             <div class="form-group">
                 <label for="rpassword">Password:</label>
-                <input type="password" id="ration" name="ration" required>
+                <input type="password" id="ration" name="password" required>
             </div>
 
             <button type="submit">Submit</button>

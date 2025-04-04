@@ -40,10 +40,11 @@ public class MyController {
     GetterRequest getterRequest;
     
     @PostMapping("/NewdoneeRequest")
+    @ResponseBody
     public String NewdoneeRequest(@ModelAttribute RequestGetter requestDonee ) {
         System.out.println("reached here");
         getterRequest.newGetterRequest(requestDonee);
-        return "";
+        return "You request for Seeker registration is successfully created, Wait for the admin approval";
     }
 
     @PostMapping("/register_process")
@@ -52,7 +53,7 @@ public class MyController {
         users.setPassword(encoder.encode(users.getPassword()));
         users.setRole("Donor");
         userRepo.save(users);
-        return "";
+        return "/html/login.html";
     }
 
     @GetMapping("/")
@@ -69,6 +70,7 @@ public class MyController {
     DonorForm_service donorForm_service;
 
     @PostMapping("/donor_form")
+    @ResponseBody
     public String donation(@ModelAttribute DonorForm donorForm) {
         donorForm_service.save(donorForm);
         donations.setItem_name(donorForm.getItem_name());
@@ -84,7 +86,7 @@ public class MyController {
         }
 
         donationService.newDonation(donations);
-        return "";
+        return "Your item has been successfully register for donation";
     }
 
     @GetMapping("/alldonations")
