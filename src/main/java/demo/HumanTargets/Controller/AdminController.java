@@ -34,7 +34,7 @@ public class AdminController {
 
     @GetMapping("/")
     public String adminHome() {
-        return "/html/admin.html";
+        return "/admin.html";
     }
     
 
@@ -60,7 +60,7 @@ public class AdminController {
     @GetMapping("/booked-items")
     public String bookeditems(){
         System.out.println("Reached here");
-        return "/html/all-booked-items.html";
+        return "/all-booked-items.html";
     }
 
     @GetMapping("/all-booked-items")

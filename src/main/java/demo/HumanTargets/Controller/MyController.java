@@ -53,12 +53,12 @@ public class MyController {
         users.setPassword(encoder.encode(users.getPassword()));
         users.setRole("Donor");
         userRepo.save(users);
-        return "/html/login.html";
+        return "/login.html";
     }
 
     @GetMapping("/")
     public String home() {
-        return "/html/index.html";
+        return "/index.html";
     }
     @Autowired
     Donations donations;
@@ -97,14 +97,14 @@ public class MyController {
 
     @GetMapping("/donationitems")
     public String donationitems() {
-        return "/html/donatedItem.html";
+        return "/donatedItem.html";
     }
     
     
 
     @GetMapping("/mydonation")
     public String mydonations() {
-        return "/html/mydonation.html";
+        return "/mydonation.html";
     }
 
     @GetMapping("/myallDonations")

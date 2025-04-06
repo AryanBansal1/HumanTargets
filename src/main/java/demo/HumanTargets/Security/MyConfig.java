@@ -23,16 +23,16 @@ public class MyConfig {
         return security
                 .csrf(customizer -> customizer.disable())
                 .authorizeHttpRequests(request -> request
-                                                       .requestMatchers("/","/html/index.html","/css/**","/img/**","/js/**","/lib/**","/scss/**","/html/login.html","/html/register.html","/register_process").permitAll()
+                                                       .requestMatchers("/","/index.html","/css/**","/img/**","/js/**","/lib/**","/scss/**","/login.html","/register.html","/register_process").permitAll()
                                                        .requestMatchers("/admin/**").hasRole("Admin")
                                                         .anyRequest().authenticated())
                                                         
                                                       
                 .formLogin(form -> form
-                    .loginPage("/html/login.html")
+                    .loginPage("/login.html")
                     .loginProcessingUrl("/perform_login")
                     .successHandler(customSuccessHandler)
-                    .failureUrl("/html/404.html"))
+                    .failureUrl("/404.html"))
                     
                // .httpBasic(Customizer.withDefaults())
                 .build();
