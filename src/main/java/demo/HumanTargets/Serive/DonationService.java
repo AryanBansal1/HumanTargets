@@ -42,6 +42,6 @@ public class DonationService {
     }
 
     public List<Donations> listOFdonatedby(String username){
-        return donations_repo.findByBookedby(username);
+        return donations_repo.findByDonatedby(username);
     }
 }
