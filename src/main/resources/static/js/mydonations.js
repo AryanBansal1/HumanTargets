@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Function to fetch donations based on username
 function fetchDonations(username) {
-    fetch(`http://localhost:9898/myallDonations?username=${username}`)
+    fetch(`http://13.114.31.69:9898/myallDonations?username=${username}`)
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById("donation-table");
