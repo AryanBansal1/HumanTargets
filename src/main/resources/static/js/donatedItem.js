@@ -28,7 +28,7 @@ function failedToGetlocation(){
 }
 
 function sendCitytobackend(district){
-    fetch(`http://13.114.31.69:9898/alldonations?distrcit=${district}`)
+    fetch(`https://13.114.31.69:9898/alldonations?distrcit=${district}`)
         .then(response => response.json())
         .then(data => {
         const container = document.getElementById("donation-container");

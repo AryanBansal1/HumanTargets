@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded",function(){
-    fetch("http://13.114.31.69:9898/Admin/all_getter_request").then(response => response.json())
+    fetch("https://13.114.31.69:9898/Admin/all_getter_request").then(response => response.json())
     .then(data => {
         const tableBody = document.getElementById("data-table");
         tableBody.innerHTML = ""; // Clear table before inserting new rows
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded",function(){
 })
 
 function approveRequest(id) {
-    fetch(`http://localhost:9898/Admin/approve_getter/${id}`, {
+    fetch(`https://13.114.31.69:9898/Admin/approve_getter/${id}`, {
         method: "POST",
     })
     .then(response => response.json())
@@ -39,7 +39,7 @@ function approveRequest(id) {
 }
 
 function denyRequest(id) {
-    fetch(`http://localhost:9898/Admin/reject_getter/${id}`, {
+    fetch(`https://13.114.31.69:9898/Admin/reject_getter/${id}`, {
         method: "POST",
     })
     .then(response => response.json())
