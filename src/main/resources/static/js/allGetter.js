@@ -40,7 +40,7 @@ function approveRequest(id) {
 
 function denyRequest(id) {
     fetch(`http://localhost:9898/Admin/reject_getter/${id}`, {
-        method: "POST",
+        method: "Delete",
     })
     .then(response => response.json())
     .then(data => {

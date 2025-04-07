@@ -23,8 +23,8 @@ public class MyConfig {
         return security
                 .csrf(customizer -> customizer.disable())
                 .authorizeHttpRequests(request -> request
-                                                       .requestMatchers("/","/html/index.html","/css/**","/img/**","/js/**","/lib/**","/scss/**","/html/login.html","/html/register.html","/register_process").permitAll()
-                                                       .requestMatchers("/admin/**").hasRole("Admin")
+                                                       .requestMatchers("/","/html/index.html","/css/**","/img/**","/js/**","/lib/**","/scss/**","/html/login.html","/html/register.html","/register_process","/NewdoneeRequest","/donor_form").permitAll()
+                                                       .requestMatchers("/admin/**","/html/admin.html").hasRole("Admin")
                                                         .anyRequest().authenticated())
                                                         
                                                       

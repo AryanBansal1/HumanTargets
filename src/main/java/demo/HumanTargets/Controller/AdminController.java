@@ -1,6 +1,8 @@
 package demo.HumanTargets.Controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,14 +49,20 @@ public class AdminController {
 
     @DeleteMapping("/reject_getter/{id}")
     @ResponseBody
-    public void deleteGetter(@PathVariable Long id){
+    public Map<String,String> deleteGetter(@PathVariable Long id){
         getterRequest.deleteGetter(id);
+        Map<String , String> response = new HashMap<>();
+        response.put("message","Request denied Successfully");
+        return response;
     }
 
     @PostMapping("/approve_getter/{id}")
     @ResponseBody
-    public void approveGetter(@PathVariable Long id) {
+    public Map<String , String> approveGetter(@PathVariable Long id) {
         getterRequest.approveGetter(id);
+        Map<String,String> response = new HashMap<>();
+        response.put("message", "Request approved Successfully");
+        return response;
     }
 
     @GetMapping("/booked-items")
