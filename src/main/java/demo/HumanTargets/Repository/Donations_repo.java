@@ -11,5 +11,7 @@ public interface Donations_repo extends JpaRepository<Donations,Long> {
     public List<Donations> findByDistrictAndStatus(String district,String status);
 
     public List<Donations> findByStatus(String status);
+
+    public List<Donations> findByBookedby(String bookedby);
     
 }

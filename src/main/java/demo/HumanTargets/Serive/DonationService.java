@@ -40,4 +40,8 @@ public class DonationService {
         donations_repo.save(don);
         simpleEmailService.sendmail(gettername, donatedbyname,itemName);
     }
+
+    public List<Donations> listOFdonatedby(String username){
+        return donations_repo.findByBookedby(username);
+    }
 }

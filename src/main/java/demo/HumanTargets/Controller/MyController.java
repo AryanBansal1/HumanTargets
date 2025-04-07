@@ -109,8 +109,8 @@ public class MyController {
 
     @GetMapping("/myallDonations")
     @ResponseBody
-    public List<DonorForm> myallDonations(@RequestParam String username) {
-        return donorForm_service.mydonation(username);
+    public List<Donations> myallDonations(@RequestParam String username) {
+        return donationService.listOFdonatedby(username);
     }
 
 
