@@ -24,7 +24,7 @@ public class MyConfig {
                 .csrf(customizer -> customizer.disable())
                 .authorizeHttpRequests(request -> request
                                                        .requestMatchers("/","/index.html","/css/**","/img/**","/js/**","/lib/**","/scss/**","/login.html","/register.html","/register_process").permitAll()
-                                                       .requestMatchers("/admin/**").hasRole("Admin")
+                                                       .requestMatchers("/admin/**","/admin.html").hasRole("Admin")
                                                         .anyRequest().authenticated())
                                                         
                                                       
