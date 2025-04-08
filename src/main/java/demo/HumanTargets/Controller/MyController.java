@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -116,14 +118,20 @@ public class MyController {
     }
 
 
-    @PutMapping("/book_donation_item")
-    @ResponseBody
-    public Map<String,String> book(@RequestParam Long id,@RequestParam String gettername) {
-         donationService.updatestatus(id, gettername);
-         Map<String,String> response = new HashMap<>();
-         response.put("message", "Donation item booked successfully");
-         return response;
+@PutMapping("/book_donation_item")
+@ResponseBody
+public ResponseEntity<Map<String, String>> book(@RequestParam Long id, @RequestParam String gettername) {
+    Map<String, String> response = new HashMap<>();
+    try {
+        donationService.updatestatus(id, gettername);
+        response.put("message", "Donation item booked successfully");
+        return ResponseEntity.ok(response);
+    } catch (Exception e) {
+        response.put("message", "Error booking donation item: " + e.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
+}
+
 
 
     

@@ -53,41 +53,49 @@ function sendCitytobackend(district){
         })
         .catch(error => console.error("error fetching donations ",error))
 }
-function bookingitem(id){
+function bookingitem(id) {
     fetch("/api/current-user")
         .then(response => response.text())
         .then(username => {
-            if(username){
-                sessionStorage.setItem("username",username);
-                console.log("username stored:",username)
+            if (username) {
+                sessionStorage.setItem("username", username);
+                console.log("username stored:", username);
 
-                fetch(`https://13.114.31.69:9898/book_donation_item?id=${id}&gettername=${encodeURIComponent(username)}`,{
+                fetch(`https://13.114.31.69:9898/book_donation_item?id=${id}&gettername=${encodeURIComponent(username)}`, {
                     method: "PUT",
-                    headers:{
-                        "Content-Type":"application/x-www-form-urlencoded",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
                     },
                 })
-                .then(response => {
-                    if(response.ok){
+                .then(response => response.json().then(body => ({
+                    status: response.status,
+                    body
+                })))
+                .then(({ status, body }) => {
+                    if (status === 200) {
                         console.log(`Donation item ${id} booked by ${username}`);
-                        alert(`Booking confirmed for item ${id}!`);
-                    }
-                    else{
-                        console.error("Failed to book donation item.");
-                        alert("Failed to book donation item. Please try again.");
+                        alert(body.message); // Show success message from backend
+                    } else {
+                        console.error("Failed to book donation item:", body.message);
+                        alert("Error: " + body.message); // Show error message from backend
                     }
                 })
-                .catch(error => console.error("Error booking donation:", error));
-                alert("An error occurred while booking the item.");
-            }
-            else{
-                console.error("user is not logged in");
+                .catch(error => {
+                    console.error("Error booking donation:", error);
+                    alert("An unexpected error occurred while booking the item.");
+                });
+            } else {
+                console.error("User is not logged in");
                 alert("You must be logged in to book a donation item.");
             }
         })
-        .catch(error => console.error("Error fetching user:", error));
-        alert("An error occurred while checking user session.");
+        .catch(error => {
+            console.error("Error fetching user:", error);
+            alert("An error occurred while checking user session.");
+        });
 }
+
+    
 
 
 
