@@ -61,7 +61,7 @@ function bookingitem(id){
                 sessionStorage.setItem("username",username);
                 console.log("username stored:",username)
 
-                fetch(`http://localhost:9898/book_donation_item?id=${id}&gettername=${encodeURIComponent(username)}`,{
+                fetch(`https://13.114.31.69:9898/book_donation_item?id=${id}&gettername=${encodeURIComponent(username)}`,{
                     method: "PUT",
                     headers:{
                         "Content-Type":"application/x-www-form-urlencoded",
