@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("https://13.114.31.69:9898/allD") // Make sure your endpoint is accessible
+    fetch(`${BASE_URL}/allD`) // Make sure your endpoint is accessible
         .then(response => {
             if (!response.ok) {
                 throw new Error("Failed to fetch donors.");

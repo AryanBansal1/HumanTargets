@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("https://13.114.31.69:9898/allP")
+    fetch(`${BASE_URL}/allP`)
         .then(response => {
             if (!response.ok) {
                 throw new Error("Failed to fetch products");

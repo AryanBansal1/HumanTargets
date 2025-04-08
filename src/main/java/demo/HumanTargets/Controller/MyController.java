@@ -138,7 +138,7 @@ public List<DonorForm> alldonors() {
 }
 
 
-@GetMapping("allP")
+@GetMapping("/allP")
 public List<Donations> allproducts() {
     return donationService.allitems();
 }

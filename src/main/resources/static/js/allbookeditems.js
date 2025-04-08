@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded",function(){
-    fetch("https://13.114.31.69:9898/Admin/all-booked-items").then(response => response.json())
+    fetch(`${BASE_URL}/Admin/all-booked-items`).then(response => response.json())
     .then(data => {
         const tableBody = document.getElementById("item-table");
         tableBody.innerHTML = ""; //clear table before inserting new rows
