@@ -12,6 +12,7 @@ public class SimpleEmailService {
     public void sendmail(String gettername,String donatedbyname,String itemName){
         // Email to getter
         SimpleMailMessage getterMessage = new SimpleMailMessage();
+        getterMessage.setFrom("humantargets@diviworkplace.com");
         getterMessage.setTo(gettername);
         getterMessage.setSubject("Item Booking Confirmation");
         getterMessage.setText("Dear Customer "  + ",\n\n" +
@@ -21,6 +22,7 @@ public class SimpleEmailService {
 
          // Email to donor
          SimpleMailMessage donorMessage = new SimpleMailMessage();
+         donorMessage.setFrom("humantargets@diviworkplace.com");
          donorMessage.setTo(donatedbyname);
          donorMessage.setSubject("Your Item Has Been Booked");
          donorMessage.setText("Dear Donor " +   ",\n\n" +
