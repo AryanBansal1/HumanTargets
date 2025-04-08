@@ -21,10 +21,13 @@ import demo.HumanTargets.Security.Users;
 import demo.HumanTargets.Serive.DonationService;
 import demo.HumanTargets.Serive.DonorForm_service;
 import demo.HumanTargets.Serive.GetterRequest;
+import demo.HumanTargets.Serive.SimpleEmailService;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -144,6 +147,20 @@ public List<DonorForm> alldonors() {
 public List<Donations> allproducts() {
     return donationService.allitems();
 }
+
+@Autowired
+SimpleEmailService simpleEmailService;
+
+@PostMapping("/contactus")
+public String contactus(@RequestParam String name,@RequestParam String email,@RequestParam String subject,@RequestParam String message) {
+        String body = String.format(
+            "Name: %s\nEmail: %s\nSubject: %s\nMessage:\n%s",
+            name, email, subject, message
+            );
+    simpleEmailService.contactusmail(body);
+    return "redirect:/index.html";
+}
+
 
 
 

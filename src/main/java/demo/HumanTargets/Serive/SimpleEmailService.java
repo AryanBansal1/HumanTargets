@@ -30,4 +30,12 @@ public class SimpleEmailService {
                  "Best regards,\nYour Team");
          javaMailSender.send(donorMessage);
     }
+    public void contactusmail(String body){
+        SimpleMailMessage contact = new SimpleMailMessage();
+        contact.setFrom("humantargets@diviworkplace.com");
+        contact.setTo("aryanbansalaryan@gmail.com");
+        contact.setSubject("Query has been raised ");
+        contact.setText(body);
+        javaMailSender.send(contact);
+    }
 }
