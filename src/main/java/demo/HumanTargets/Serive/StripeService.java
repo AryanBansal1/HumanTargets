@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
-import com.stripe.model.PaymentIntent;
-import com.stripe.param.PaymentIntentCreateParams;
+import com.stripe.model.checkout.Session;
+import com.stripe.param.checkout.SessionCreateParams;
 
 @Service
 public class StripeService {
@@ -14,19 +14,33 @@ public class StripeService {
     @Value("${stripe.api.key}")
     private String stripapikey;
 
-    public PaymentIntent createPaymentIntent(Long amount) throws StripeException{
+    public Session createCheckoutSession(Long amount, String name, String email) throws StripeException {
         Stripe.apiKey = stripapikey;
-
-        PaymentIntentCreateParams params = PaymentIntentCreateParams.builder()
-                        .setAmount(amount*100)
-                        .setCurrency("inr")
-                        .setAutomaticPaymentMethods(
-                            PaymentIntentCreateParams.AutomaticPaymentMethods.builder()
-                            .setEnabled(true)
-                            .build()
+    
+        SessionCreateParams params =
+            SessionCreateParams.builder()
+                .setMode(SessionCreateParams.Mode.PAYMENT)
+                .setSuccessUrl("/index.html") // ✅ Replace with your actual frontend
+                .setCancelUrl("/index.html")
+                .addLineItem(
+                    SessionCreateParams.LineItem.builder()
+                        .setQuantity(1L)
+                        .setPriceData(
+                            SessionCreateParams.LineItem.PriceData.builder()
+                                .setCurrency("inr")
+                                .setUnitAmount(amount * 100) // in paise
+                                .setProductData(
+                                    SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                                        .setName("Donation from " + name)
+                                        .build()
+                                )
+                                .build()
                         )
-                        .build();
-
-                        return PaymentIntent.create(params);
+                        .build()
+                )
+                .setCustomerEmail(email) // optional
+                .build();
+    
+        return Session.create(params);
     }
 }

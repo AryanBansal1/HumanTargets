@@ -21,41 +21,17 @@ document.addEventListener("DOMContentLoaded",()=>{
 
         // Create PaymentIntent
         try {
-                const res = await fetch(`${BASE_URL}/api/payment/create-payment-intent`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ amount: amount })
-                });
-                const { clientSecret } = await res.json();
-
-                if (!card) {
-                    document.getElementById("card-section").style.display = "block";
-                    elements = stripe.elements();
-                    card = elements.create("card");
-                    card.mount("#card-element");
-                }
-
-                const result = await stripe.confirmCardPayment(clientSecret, {
-                    payment_method: {
-                        card: card,
-                        billing_details: {
-                            name: name,
-                            email: email
-                        }
-                    }
-                });
-
-                if (result.error) {
-                    alert("❌ Payment Failed: " + result.error.message);
-                } 
-                else if (result.paymentIntent.status === "succeeded") {
-                    alert("✅ Donation successful! Thank you ❤️");
-                    window.location.reload();
-                }
-            } 
-        catch (error) {
-            console.error("Payment error:", error);
-            alert("An error occurred. Please try again.");
+            const res = await fetch(`${BASE_URL}/api/payment/create-checkout-session`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, amount })
+            });
+    
+            const { checkoutUrl } = await res.json();
+            window.location.href = checkoutUrl; // ⏩ Redirect to Stripe
+        } catch (error) {
+            console.error("Checkout error:", error);
+            alert("Something went wrong. Try again.");
         }
         
 

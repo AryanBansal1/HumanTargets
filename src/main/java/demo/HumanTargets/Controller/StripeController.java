@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stripe.exception.StripeException;
-import com.stripe.model.PaymentIntent;
+import com.stripe.model.checkout.Session;
 
 import demo.HumanTargets.Serive.StripeService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,14 +24,20 @@ public class StripeController {
     @Autowired
     private StripeService stripeService;
 
-    @PostMapping("/create-payment-intent")
-    public Map<String, String> createpaymentintent(@RequestBody Map<String ,Object> data)throws StripeException {
+    @PostMapping("/create-checkout-session")
+    public Map<String, String> createCheckoutSession(@RequestBody Map<String, Object> data) throws StripeException {
         Long amount = Long.valueOf((Integer) data.get("amount"));
-        PaymentIntent paymentIntent = stripeService.createPaymentIntent(amount);
-        Map<String,String> responsedata = new HashMap<>();
-        responsedata.put("clientSecret",paymentIntent.getClientSecret());
-        return responsedata;
+        String name = (String) data.get("name");
+        String email = (String) data.get("email");
+    
+        Session session = stripeService.createCheckoutSession(amount, name, email);
+        Map<String, String> response = new HashMap<>();
+        response.put("checkoutUrl", session.getUrl());
+        return response;
     }
+
+    
+    
     
     
 }
