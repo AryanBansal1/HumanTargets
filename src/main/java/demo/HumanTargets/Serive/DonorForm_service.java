@@ -21,4 +21,8 @@ public class DonorForm_service {
         return donor_form_repo.findByUsername(username);
     }
 
+    public List<DonorForm> allDonors(){
+        return donor_form_repo.findDistinctByUsername();
+    }
+
 }

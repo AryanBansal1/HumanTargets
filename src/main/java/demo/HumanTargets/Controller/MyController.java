@@ -132,6 +132,20 @@ public ResponseEntity<Map<String, String>> book(@RequestParam Long id, @RequestP
     }
 }
 
+@GetMapping("/allD")
+public List<DonorForm> alldonors() {
+    return donorForm_service.allDonors();
+}
+
+
+@GetMapping("allP")
+public List<Donations> allproducts() {
+    return donationService.allitems();
+}
+
+
+
+
 
 
     
