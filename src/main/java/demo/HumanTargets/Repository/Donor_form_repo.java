@@ -14,7 +14,7 @@ public interface Donor_form_repo extends JpaRepository<DonorForm,Long> {
     @Query(value = """
     SELECT * FROM (
         SELECT *, ROW_NUMBER() OVER (PARTITION BY username ORDER BY id) AS rn
-        FROM donor_form
+        FROM donor_donation_form
     ) sub
     WHERE rn = 1
 """, nativeQuery = true)

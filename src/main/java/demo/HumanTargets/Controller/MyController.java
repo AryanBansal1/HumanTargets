@@ -133,12 +133,14 @@ public ResponseEntity<Map<String, String>> book(@RequestParam Long id, @RequestP
 }
 
 @GetMapping("/allD")
+@ResponseBody
 public List<DonorForm> alldonors() {
     return donorForm_service.allDonors();
 }
 
 
 @GetMapping("/allP")
+@ResponseBody
 public List<Donations> allproducts() {
     return donationService.allitems();
 }
