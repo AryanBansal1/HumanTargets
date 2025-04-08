@@ -70,18 +70,23 @@ function bookingitem(id){
                 .then(response => {
                     if(response.ok){
                         console.log(`Donation item ${id} booked by ${username}`);
+                        alert(`Booking confirmed for item ${id}!`);
                     }
                     else{
                         console.error("Failed to book donation item.");
+                        alert("Failed to book donation item. Please try again.");
                     }
                 })
                 .catch(error => console.error("Error booking donation:", error));
+                alert("An error occurred while booking the item.");
             }
             else{
                 console.error("user is not logged in");
+                alert("You must be logged in to book a donation item.");
             }
         })
         .catch(error => console.error("Error fetching user:", error));
+        alert("An error occurred while checking user session.");
 }
 
 

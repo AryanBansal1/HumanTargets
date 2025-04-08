@@ -1,6 +1,8 @@
 package demo.HumanTargets.Controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -116,9 +118,11 @@ public class MyController {
 
     @PutMapping("/book_donation_item")
     @ResponseBody
-    public String book(@RequestParam Long id,@RequestParam String gettername) {
+    public Map<String,String> book(@RequestParam Long id,@RequestParam String gettername) {
          donationService.updatestatus(id, gettername);
-         return "Donation item booked successfully";
+         Map<String,String> response = new HashMap<>();
+         response.put("message", "Donation item booked successfully");
+         return response;
     }
 
 
