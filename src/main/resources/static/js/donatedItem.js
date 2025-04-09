@@ -35,18 +35,29 @@ function sendCitytobackend(district){
         container.innerHTML = "";
         data.forEach(donation => {
             const card = document.createElement("div");
-            card.classList.add("card");
+            card.classList.add("card", "card-box");
             card.innerHTML = `
                  <h2 class="product-title">${donation.item_name}</h2>
          <table class="product-table">
-        <tr><td>Category:</td><td>${donation.category}</td></tr>
-        <tr><td>City:</td><td>${donation.city}</td></tr>
-        <tr><td>Year Old:</td><td>${donation.yearold}</td></tr>
-        <tr><td>Status:</td><td>${donation.status}</td></tr>
+        <tr>
+            <td><strong>Category:</strong></td>
+            <td>${donation.category}</td>
+        </tr>
+        <tr>
+            <td><strong>City:</strong></td>
+            <td>${donation.city}</td>
+        </tr>
+        <tr>
+            <td><strong>Year Old:</strong></td>
+            <td>${donation.yearold}</td>
+        </tr>
+        <tr>
+            <td><strong>Status:</strong></td>
+            <td>${donation.status}</td>
+        </tr>
     </table>
     <button class="book-btn" onclick="bookingitem(${donation.id})">Book Now</button>
-
-    `;
+`;
             container.appendChild(card);
 
            });
