@@ -26,7 +26,6 @@ import demo.HumanTargets.Serive.SimpleEmailService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -47,11 +46,11 @@ public class MyController {
     GetterRequest getterRequest;
     
     @PostMapping("/NewdoneeRequest")
-    @ResponseBody
     public String NewdoneeRequest(@ModelAttribute RequestGetter requestDonee ) {
         System.out.println("reached here");
         getterRequest.newGetterRequest(requestDonee);
-        return "You request for Seeker registration is successfully created, Wait for the admin approval";
+        System.out.println("You request for Seeker registration is successfully created, Wait for the admin approval"); 
+        return "redirect:/login.html";
     }
 
     @PostMapping("/register_process")
@@ -77,7 +76,6 @@ public class MyController {
     DonorForm_service donorForm_service;
 
     @PostMapping("/donor_form")
-    @ResponseBody
     public String donation(@ModelAttribute DonorForm donorForm) {
         donorForm_service.save(donorForm);
         donations.setItem_name(donorForm.getItem_name());
@@ -93,7 +91,8 @@ public class MyController {
         }
 
         donationService.newDonation(donations);
-        return "Your item has been successfully register for donation";
+        System.out.println("Your item has been successfully register for donation");
+        return "redirect:/register.html";
     }
 
     @GetMapping("/alldonations")
