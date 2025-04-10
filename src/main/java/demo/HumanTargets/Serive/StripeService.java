@@ -14,14 +14,20 @@ public class StripeService {
     @Value("${stripe.api.key}")
     private String stripapikey;
 
+    @Value("${app.base-url}")
+    private String baseUrl;
+
+    @Value("${app.prod-url}")
+    private String  prodUrl;
+
     public Session createCheckoutSession(Long amount, String name, String email) throws StripeException {
         Stripe.apiKey = stripapikey;
     
         SessionCreateParams params =
             SessionCreateParams.builder()
                 .setMode(SessionCreateParams.Mode.PAYMENT)
-                .setSuccessUrl("/index.html") // ✅ Replace with your actual frontend
-                .setCancelUrl("/index.html")
+                .setSuccessUrl(baseUrl +"/success.html") // ✅ Replace with your actual frontend
+                .setCancelUrl(baseUrl+"/cancel.html")
                 .addLineItem(
                     SessionCreateParams.LineItem.builder()
                         .setQuantity(1L)
@@ -40,6 +46,10 @@ public class StripeService {
                 )
                 .setCustomerEmail(email) // optional
                 .build();
+
+                System.out.println("Success URL: " + baseUrl + "/success");
+                System.out.println("Cancel URL: " + baseUrl + "/cancel");
+
     
         return Session.create(params);
     }
