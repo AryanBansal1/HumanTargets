@@ -57,7 +57,7 @@ public class MyController {
     public String register(@ModelAttribute Users users) {
         System.out.println("entered the registration process");
         users.setPassword(encoder.encode(users.getPassword()));
-        users.setRole("Donor");
+        users.setRole("ROLE_Donor");
         userRepo.save(users);
         return "/login.html";
     }

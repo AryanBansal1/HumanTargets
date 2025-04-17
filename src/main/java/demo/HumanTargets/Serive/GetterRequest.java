@@ -43,7 +43,7 @@ public class GetterRequest {
        users.setUsername(getter.getUsername());
        users.setPassword(encoder.encode(getter.getPassword()));
        users.setPhonenumber(getter.getPhoneNumber());
-       users.setRole("Getter");
+       users.setRole("ROLE_Getter");
        userRepo.save(users);
         getterRequest_repo.delete(getter);
     }
