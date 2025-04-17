@@ -159,18 +159,5 @@ public String contactus(@RequestParam String name,@RequestParam String email,@Re
     simpleEmailService.contactusmail(body);
     return "redirect:/index.html";
 }
-
-
-
-
-
-
-
-    
-    
-    
-    
-    
-    
     
 }
