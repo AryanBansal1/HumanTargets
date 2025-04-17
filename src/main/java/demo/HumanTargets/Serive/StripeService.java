@@ -26,8 +26,8 @@ public class StripeService {
         SessionCreateParams params =
             SessionCreateParams.builder()
                 .setMode(SessionCreateParams.Mode.PAYMENT)
-                .setSuccessUrl(baseUrl +"/success.html") // ✅ Replace with your actual frontend
-                .setCancelUrl(baseUrl+"/cancel.html")
+                .setSuccessUrl(prodUrl +"/success.html") // ✅ Replace with your actual frontend
+                .setCancelUrl(prodUrl+"/cancel.html")
                 .addLineItem(
                     SessionCreateParams.LineItem.builder()
                         .setQuantity(1L)
@@ -47,8 +47,8 @@ public class StripeService {
                 .setCustomerEmail(email) // optional
                 .build();
 
-                System.out.println("Success URL: " + baseUrl + "/success");
-                System.out.println("Cancel URL: " + baseUrl + "/cancel");
+                System.out.println("Success URL: " + prodUrl + "/success");
+                System.out.println("Cancel URL: " + prodUrl + "/cancel");
 
     
         return Session.create(params);
